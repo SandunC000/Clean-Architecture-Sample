@@ -1,50 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:full/core/util/app_colors.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String page;
-  const MyAppBar({Key? key, required this.page}) : super(key: key);
+  final bool backArrow;
+  final bool logOut;
+  const MyAppBar({Key? key, required this.page, required this.backArrow, required this.logOut,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.indigo[900],
-      title: Row(
-        children: [
-          IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Text(
-              'Menu',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
+      automaticallyImplyLeading: backArrow,
+      iconTheme: const IconThemeData(color: AppColors.appColorWhite),
+      title: Text(
+        page,
+        style: const TextStyle(color: Colors.white),
       ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: Row(
-            children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.logout,
-                  color: Colors.white,
+        if (logOut)
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.logout,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    // Handle logout button press
+                  },
                 ),
-                onPressed: () {},
-              ),
-              const Text(
-                'Log Out',
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
+                const Text(
+                  'Log Out',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
           ),
-        ),
       ],
     );
   }

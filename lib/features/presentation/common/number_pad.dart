@@ -138,10 +138,7 @@ class _NumberPadState extends State<NumberPad> {
                       widget.numberController.text.length == 4 &&
                       widget.numberController.text ==
                           widget.confirmNumberController) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Dashboard()));
+                    Navigator.pushReplacementNamed(context, Routes.DASHBOARD);
                   }
                 },
               ),

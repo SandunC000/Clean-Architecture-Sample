@@ -4,6 +4,8 @@ import 'package:full/features/presentation/common/circle.dart';
 import 'package:full/features/presentation/common/number_pad.dart';
 import 'package:full/features/presentation/views/pin_page/confirm_pin_page.dart';
 
+import '../../../../core/util/navigation_routes.dart';
+
 class CreatePinPage extends StatefulWidget {
   const CreatePinPage({super.key});
 
@@ -16,12 +18,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
 
   onTap() {
     numberController.text.length == 4
-        ? () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    ConfirmPinPage(pin: numberController.text)))
-        : null;
+        ? () => Navigator.pushNamed(context, Routes.CONFIRM_PIN_PAGE) : null;
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:full/features/presentation/common/app_bar.dart';
 import 'package:full/features/presentation/common/bottom_nav_bar.dart';
 import 'package:full/features/presentation/views/menu/menu.dart';
 
@@ -17,29 +18,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Menu()));
-            },
-          ),
-        ),
-        title: const Padding(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            'Edit Profile',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-      ),
+      appBar: const MyAppBar(page: 'Profile', backArrow: true, logOut: false),
       bottomNavigationBar: const BottomNavBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),

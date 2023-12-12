@@ -1,4 +1,5 @@
 import 'package:full/core/util/app_colors.dart';
+import 'package:full/features/presentation/common/app_bar.dart';
 import 'package:full/features/presentation/common/bottom_nav_bar.dart';
 import 'package:full/features/presentation/common/fleet_status_tile.dart';
 import 'package:flutter/material.dart';
@@ -9,28 +10,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
-        title: const Padding(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            "Fleet Dashboard",
-            style: TextStyle(color: AppColors.appColorWhite),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: AppColors.appColorWhite,
-              ),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
+      appBar: const MyAppBar(page: 'Fleet Dashboard', backArrow: false, logOut: false,),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

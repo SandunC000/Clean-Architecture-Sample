@@ -9,13 +9,11 @@ class FleetStatusTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color? color;
-
     if (count == 1 || count == 2) {
       color = Colors.orange[700];
     } else if (count >= 3) {
       color = Colors.red[700];
     }
-
     iconTile() {
       return Column(
         children: [

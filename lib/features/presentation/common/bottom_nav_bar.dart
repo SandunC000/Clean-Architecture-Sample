@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/util/navigation_routes.dart';
+
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
     super.key,
@@ -43,6 +45,23 @@ class BottomNavBar extends StatelessWidget {
             label: ''),
       ],
       iconSize: 30,
+      onTap: (int index) {
+        switch (index) {
+          case 0:
+            Navigator.pushNamed(context, Routes.DASHBOARD);
+            break;
+          case 1:
+            Navigator.pushNamed(context, Routes.MENU);
+            break;
+          // case 2:
+          //   Navigator.pushNamed(context, Routes.MENU);
+          //   break;
+          case 3:
+            Navigator.pushNamed(context, Routes.PROFILE);
+            break;
+
+        }
+      },
     );
   }
 }
