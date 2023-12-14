@@ -11,6 +11,7 @@ class AuthenticationPage extends StatefulWidget {
 }
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
+  bool snackbarShown = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,12 +46,18 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                   BoxDecoration(borderRadius: BorderRadius.circular(50)),
                   child: ElevatedButton.icon(
                       onPressed: () async {
-                        bool auth = await Authentication.authentication();
-                        print("can authenticate : $auth");
-                        if(auth){
-                          Navigator.pushNamed(context, Routes.MENU);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Authentication Failed'),));
+                        if (!snackbarShown) {
+                          final scaffoldMessenger = ScaffoldMessenger.of(context);
+                          bool auth = await Authentication.authentication();
+                          print("can authenticate : $auth");
+                          if (auth) {
+                            Navigator.pushReplacementNamed(context, Routes.MENU);
+                          } else {
+                            scaffoldMessenger.showSnackBar(
+                              const SnackBar(content: Text('Authentication Failed')),
+                            );
+                            snackbarShown = true;
+                          }
                         }
                       },
                       icon: const Icon(Icons.fingerprint),
